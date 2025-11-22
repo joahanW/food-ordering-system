@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+      - "8000:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "johan@gmail.com"
+      PGADMIN_DEFAULT_PASSWORD: "password"
+    depends_on:
+      - postgres-server
+    networks:
+      - food-ordering-system
+
+  postgres-server:
+    container_name: postgres-server
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5432:5432"
+    volumes:
+      - microservices-saga:/var/lib/postgresql/data
+    networks:
+      - food-ordering-system
+
+volumes:
+  microservices-saga:
+    name: microservices-saga
+networks:
+  food-ordering-system:
+    name: food-ordering-system
+    driver: bridge
