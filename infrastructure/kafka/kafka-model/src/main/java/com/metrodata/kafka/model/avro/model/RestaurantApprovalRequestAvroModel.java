@@ -14,10 +14,10 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class RestaurantApprovalRequestAvroModel extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 5994122435697958162L;
+  private static final long serialVersionUID = 2211352241267335411L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"RestaurantApprovalRequestAvroModel\",\"namespace\":\"com.metrodata.kafka.model.avro.model\",\"fields\":[{\"name\":\"id\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"sagaId\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"paymentId\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"restaurantId\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"orderId\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"restaurantOrderStatus\",\"type\":{\"type\":\"enum\",\"name\":\"RestaurantOrderStatus\",\"symbols\":[\"PAID\"]}},{\"name\":\"price\",\"type\":{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":10,\"scale\":2}},{\"name\":\"products\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Product\",\"fields\":[{\"name\":\"id\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"logicalType\":\"uuid\"},{\"name\":\"quantity\",\"type\":\"int\"}]}}},{\"name\":\"createdAt\",\"type\":{\"type\":\"long\",\"logicalType\":\"timestamp-millis\"}}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"RestaurantApprovalRequestAvroModel\",\"namespace\":\"com.metrodata.kafka.model.avro.model\",\"fields\":[{\"name\":\"id\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"sagaId\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"restaurantId\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"orderId\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"restaurantOrderStatus\",\"type\":{\"type\":\"enum\",\"name\":\"RestaurantOrderStatus\",\"symbols\":[\"PAID\"]}},{\"name\":\"price\",\"type\":{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":10,\"scale\":2}},{\"name\":\"products\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Product\",\"fields\":[{\"name\":\"id\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"logicalType\":\"uuid\"},{\"name\":\"quantity\",\"type\":\"int\"}]}}},{\"name\":\"createdAt\",\"type\":{\"type\":\"long\",\"logicalType\":\"timestamp-millis\"}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
@@ -80,7 +80,6 @@ public class RestaurantApprovalRequestAvroModel extends org.apache.avro.specific
 
   private java.util.UUID id;
   private java.util.UUID sagaId;
-  private java.util.UUID paymentId;
   private java.util.UUID restaurantId;
   private java.util.UUID orderId;
   private com.metrodata.kafka.model.avro.model.RestaurantOrderStatus restaurantOrderStatus;
@@ -99,7 +98,6 @@ public class RestaurantApprovalRequestAvroModel extends org.apache.avro.specific
    * All-args constructor.
    * @param id The new value for id
    * @param sagaId The new value for sagaId
-   * @param paymentId The new value for paymentId
    * @param restaurantId The new value for restaurantId
    * @param orderId The new value for orderId
    * @param restaurantOrderStatus The new value for restaurantOrderStatus
@@ -107,10 +105,9 @@ public class RestaurantApprovalRequestAvroModel extends org.apache.avro.specific
    * @param products The new value for products
    * @param createdAt The new value for createdAt
    */
-  public RestaurantApprovalRequestAvroModel(java.util.UUID id, java.util.UUID sagaId, java.util.UUID paymentId, java.util.UUID restaurantId, java.util.UUID orderId, com.metrodata.kafka.model.avro.model.RestaurantOrderStatus restaurantOrderStatus, java.math.BigDecimal price, java.util.List<com.metrodata.kafka.model.avro.model.Product> products, java.time.Instant createdAt) {
+  public RestaurantApprovalRequestAvroModel(java.util.UUID id, java.util.UUID sagaId, java.util.UUID restaurantId, java.util.UUID orderId, com.metrodata.kafka.model.avro.model.RestaurantOrderStatus restaurantOrderStatus, java.math.BigDecimal price, java.util.List<com.metrodata.kafka.model.avro.model.Product> products, java.time.Instant createdAt) {
     this.id = id;
     this.sagaId = sagaId;
-    this.paymentId = paymentId;
     this.restaurantId = restaurantId;
     this.orderId = orderId;
     this.restaurantOrderStatus = restaurantOrderStatus;
@@ -131,20 +128,18 @@ public class RestaurantApprovalRequestAvroModel extends org.apache.avro.specific
     switch (field$) {
     case 0: return id;
     case 1: return sagaId;
-    case 2: return paymentId;
-    case 3: return restaurantId;
-    case 4: return orderId;
-    case 5: return restaurantOrderStatus;
-    case 6: return price;
-    case 7: return products;
-    case 8: return createdAt;
+    case 2: return restaurantId;
+    case 3: return orderId;
+    case 4: return restaurantOrderStatus;
+    case 5: return price;
+    case 6: return products;
+    case 7: return createdAt;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
 
   private static final org.apache.avro.Conversion<?>[] conversions =
       new org.apache.avro.Conversion<?>[] {
-      new org.apache.avro.Conversions.UUIDConversion(),
       new org.apache.avro.Conversions.UUIDConversion(),
       new org.apache.avro.Conversions.UUIDConversion(),
       new org.apache.avro.Conversions.UUIDConversion(),
@@ -168,13 +163,12 @@ public class RestaurantApprovalRequestAvroModel extends org.apache.avro.specific
     switch (field$) {
     case 0: id = (java.util.UUID)value$; break;
     case 1: sagaId = (java.util.UUID)value$; break;
-    case 2: paymentId = (java.util.UUID)value$; break;
-    case 3: restaurantId = (java.util.UUID)value$; break;
-    case 4: orderId = (java.util.UUID)value$; break;
-    case 5: restaurantOrderStatus = (com.metrodata.kafka.model.avro.model.RestaurantOrderStatus)value$; break;
-    case 6: price = (java.math.BigDecimal)value$; break;
-    case 7: products = (java.util.List<com.metrodata.kafka.model.avro.model.Product>)value$; break;
-    case 8: createdAt = (java.time.Instant)value$; break;
+    case 2: restaurantId = (java.util.UUID)value$; break;
+    case 3: orderId = (java.util.UUID)value$; break;
+    case 4: restaurantOrderStatus = (com.metrodata.kafka.model.avro.model.RestaurantOrderStatus)value$; break;
+    case 5: price = (java.math.BigDecimal)value$; break;
+    case 6: products = (java.util.List<com.metrodata.kafka.model.avro.model.Product>)value$; break;
+    case 7: createdAt = (java.time.Instant)value$; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -211,23 +205,6 @@ public class RestaurantApprovalRequestAvroModel extends org.apache.avro.specific
    */
   public void setSagaId(java.util.UUID value) {
     this.sagaId = value;
-  }
-
-  /**
-   * Gets the value of the 'paymentId' field.
-   * @return The value of the 'paymentId' field.
-   */
-  public java.util.UUID getPaymentId() {
-    return paymentId;
-  }
-
-
-  /**
-   * Sets the value of the 'paymentId' field.
-   * @param value the value to set.
-   */
-  public void setPaymentId(java.util.UUID value) {
-    this.paymentId = value;
   }
 
   /**
@@ -375,7 +352,6 @@ public class RestaurantApprovalRequestAvroModel extends org.apache.avro.specific
 
     private java.util.UUID id;
     private java.util.UUID sagaId;
-    private java.util.UUID paymentId;
     private java.util.UUID restaurantId;
     private java.util.UUID orderId;
     private com.metrodata.kafka.model.avro.model.RestaurantOrderStatus restaurantOrderStatus;
@@ -402,33 +378,29 @@ public class RestaurantApprovalRequestAvroModel extends org.apache.avro.specific
         this.sagaId = data().deepCopy(fields()[1].schema(), other.sagaId);
         fieldSetFlags()[1] = other.fieldSetFlags()[1];
       }
-      if (isValidValue(fields()[2], other.paymentId)) {
-        this.paymentId = data().deepCopy(fields()[2].schema(), other.paymentId);
+      if (isValidValue(fields()[2], other.restaurantId)) {
+        this.restaurantId = data().deepCopy(fields()[2].schema(), other.restaurantId);
         fieldSetFlags()[2] = other.fieldSetFlags()[2];
       }
-      if (isValidValue(fields()[3], other.restaurantId)) {
-        this.restaurantId = data().deepCopy(fields()[3].schema(), other.restaurantId);
+      if (isValidValue(fields()[3], other.orderId)) {
+        this.orderId = data().deepCopy(fields()[3].schema(), other.orderId);
         fieldSetFlags()[3] = other.fieldSetFlags()[3];
       }
-      if (isValidValue(fields()[4], other.orderId)) {
-        this.orderId = data().deepCopy(fields()[4].schema(), other.orderId);
+      if (isValidValue(fields()[4], other.restaurantOrderStatus)) {
+        this.restaurantOrderStatus = data().deepCopy(fields()[4].schema(), other.restaurantOrderStatus);
         fieldSetFlags()[4] = other.fieldSetFlags()[4];
       }
-      if (isValidValue(fields()[5], other.restaurantOrderStatus)) {
-        this.restaurantOrderStatus = data().deepCopy(fields()[5].schema(), other.restaurantOrderStatus);
+      if (isValidValue(fields()[5], other.price)) {
+        this.price = data().deepCopy(fields()[5].schema(), other.price);
         fieldSetFlags()[5] = other.fieldSetFlags()[5];
       }
-      if (isValidValue(fields()[6], other.price)) {
-        this.price = data().deepCopy(fields()[6].schema(), other.price);
+      if (isValidValue(fields()[6], other.products)) {
+        this.products = data().deepCopy(fields()[6].schema(), other.products);
         fieldSetFlags()[6] = other.fieldSetFlags()[6];
       }
-      if (isValidValue(fields()[7], other.products)) {
-        this.products = data().deepCopy(fields()[7].schema(), other.products);
+      if (isValidValue(fields()[7], other.createdAt)) {
+        this.createdAt = data().deepCopy(fields()[7].schema(), other.createdAt);
         fieldSetFlags()[7] = other.fieldSetFlags()[7];
-      }
-      if (isValidValue(fields()[8], other.createdAt)) {
-        this.createdAt = data().deepCopy(fields()[8].schema(), other.createdAt);
-        fieldSetFlags()[8] = other.fieldSetFlags()[8];
       }
     }
 
@@ -446,33 +418,29 @@ public class RestaurantApprovalRequestAvroModel extends org.apache.avro.specific
         this.sagaId = data().deepCopy(fields()[1].schema(), other.sagaId);
         fieldSetFlags()[1] = true;
       }
-      if (isValidValue(fields()[2], other.paymentId)) {
-        this.paymentId = data().deepCopy(fields()[2].schema(), other.paymentId);
+      if (isValidValue(fields()[2], other.restaurantId)) {
+        this.restaurantId = data().deepCopy(fields()[2].schema(), other.restaurantId);
         fieldSetFlags()[2] = true;
       }
-      if (isValidValue(fields()[3], other.restaurantId)) {
-        this.restaurantId = data().deepCopy(fields()[3].schema(), other.restaurantId);
+      if (isValidValue(fields()[3], other.orderId)) {
+        this.orderId = data().deepCopy(fields()[3].schema(), other.orderId);
         fieldSetFlags()[3] = true;
       }
-      if (isValidValue(fields()[4], other.orderId)) {
-        this.orderId = data().deepCopy(fields()[4].schema(), other.orderId);
+      if (isValidValue(fields()[4], other.restaurantOrderStatus)) {
+        this.restaurantOrderStatus = data().deepCopy(fields()[4].schema(), other.restaurantOrderStatus);
         fieldSetFlags()[4] = true;
       }
-      if (isValidValue(fields()[5], other.restaurantOrderStatus)) {
-        this.restaurantOrderStatus = data().deepCopy(fields()[5].schema(), other.restaurantOrderStatus);
+      if (isValidValue(fields()[5], other.price)) {
+        this.price = data().deepCopy(fields()[5].schema(), other.price);
         fieldSetFlags()[5] = true;
       }
-      if (isValidValue(fields()[6], other.price)) {
-        this.price = data().deepCopy(fields()[6].schema(), other.price);
+      if (isValidValue(fields()[6], other.products)) {
+        this.products = data().deepCopy(fields()[6].schema(), other.products);
         fieldSetFlags()[6] = true;
       }
-      if (isValidValue(fields()[7], other.products)) {
-        this.products = data().deepCopy(fields()[7].schema(), other.products);
+      if (isValidValue(fields()[7], other.createdAt)) {
+        this.createdAt = data().deepCopy(fields()[7].schema(), other.createdAt);
         fieldSetFlags()[7] = true;
-      }
-      if (isValidValue(fields()[8], other.createdAt)) {
-        this.createdAt = data().deepCopy(fields()[8].schema(), other.createdAt);
-        fieldSetFlags()[8] = true;
       }
     }
 
@@ -557,46 +525,6 @@ public class RestaurantApprovalRequestAvroModel extends org.apache.avro.specific
     }
 
     /**
-      * Gets the value of the 'paymentId' field.
-      * @return The value.
-      */
-    public java.util.UUID getPaymentId() {
-      return paymentId;
-    }
-
-
-    /**
-      * Sets the value of the 'paymentId' field.
-      * @param value The value of 'paymentId'.
-      * @return This builder.
-      */
-    public com.metrodata.kafka.model.avro.model.RestaurantApprovalRequestAvroModel.Builder setPaymentId(java.util.UUID value) {
-      validate(fields()[2], value);
-      this.paymentId = value;
-      fieldSetFlags()[2] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'paymentId' field has been set.
-      * @return True if the 'paymentId' field has been set, false otherwise.
-      */
-    public boolean hasPaymentId() {
-      return fieldSetFlags()[2];
-    }
-
-
-    /**
-      * Clears the value of the 'paymentId' field.
-      * @return This builder.
-      */
-    public com.metrodata.kafka.model.avro.model.RestaurantApprovalRequestAvroModel.Builder clearPaymentId() {
-      paymentId = null;
-      fieldSetFlags()[2] = false;
-      return this;
-    }
-
-    /**
       * Gets the value of the 'restaurantId' field.
       * @return The value.
       */
@@ -611,9 +539,9 @@ public class RestaurantApprovalRequestAvroModel extends org.apache.avro.specific
       * @return This builder.
       */
     public com.metrodata.kafka.model.avro.model.RestaurantApprovalRequestAvroModel.Builder setRestaurantId(java.util.UUID value) {
-      validate(fields()[3], value);
+      validate(fields()[2], value);
       this.restaurantId = value;
-      fieldSetFlags()[3] = true;
+      fieldSetFlags()[2] = true;
       return this;
     }
 
@@ -622,7 +550,7 @@ public class RestaurantApprovalRequestAvroModel extends org.apache.avro.specific
       * @return True if the 'restaurantId' field has been set, false otherwise.
       */
     public boolean hasRestaurantId() {
-      return fieldSetFlags()[3];
+      return fieldSetFlags()[2];
     }
 
 
@@ -632,7 +560,7 @@ public class RestaurantApprovalRequestAvroModel extends org.apache.avro.specific
       */
     public com.metrodata.kafka.model.avro.model.RestaurantApprovalRequestAvroModel.Builder clearRestaurantId() {
       restaurantId = null;
-      fieldSetFlags()[3] = false;
+      fieldSetFlags()[2] = false;
       return this;
     }
 
@@ -651,9 +579,9 @@ public class RestaurantApprovalRequestAvroModel extends org.apache.avro.specific
       * @return This builder.
       */
     public com.metrodata.kafka.model.avro.model.RestaurantApprovalRequestAvroModel.Builder setOrderId(java.util.UUID value) {
-      validate(fields()[4], value);
+      validate(fields()[3], value);
       this.orderId = value;
-      fieldSetFlags()[4] = true;
+      fieldSetFlags()[3] = true;
       return this;
     }
 
@@ -662,7 +590,7 @@ public class RestaurantApprovalRequestAvroModel extends org.apache.avro.specific
       * @return True if the 'orderId' field has been set, false otherwise.
       */
     public boolean hasOrderId() {
-      return fieldSetFlags()[4];
+      return fieldSetFlags()[3];
     }
 
 
@@ -672,7 +600,7 @@ public class RestaurantApprovalRequestAvroModel extends org.apache.avro.specific
       */
     public com.metrodata.kafka.model.avro.model.RestaurantApprovalRequestAvroModel.Builder clearOrderId() {
       orderId = null;
-      fieldSetFlags()[4] = false;
+      fieldSetFlags()[3] = false;
       return this;
     }
 
@@ -691,9 +619,9 @@ public class RestaurantApprovalRequestAvroModel extends org.apache.avro.specific
       * @return This builder.
       */
     public com.metrodata.kafka.model.avro.model.RestaurantApprovalRequestAvroModel.Builder setRestaurantOrderStatus(com.metrodata.kafka.model.avro.model.RestaurantOrderStatus value) {
-      validate(fields()[5], value);
+      validate(fields()[4], value);
       this.restaurantOrderStatus = value;
-      fieldSetFlags()[5] = true;
+      fieldSetFlags()[4] = true;
       return this;
     }
 
@@ -702,7 +630,7 @@ public class RestaurantApprovalRequestAvroModel extends org.apache.avro.specific
       * @return True if the 'restaurantOrderStatus' field has been set, false otherwise.
       */
     public boolean hasRestaurantOrderStatus() {
-      return fieldSetFlags()[5];
+      return fieldSetFlags()[4];
     }
 
 
@@ -712,7 +640,7 @@ public class RestaurantApprovalRequestAvroModel extends org.apache.avro.specific
       */
     public com.metrodata.kafka.model.avro.model.RestaurantApprovalRequestAvroModel.Builder clearRestaurantOrderStatus() {
       restaurantOrderStatus = null;
-      fieldSetFlags()[5] = false;
+      fieldSetFlags()[4] = false;
       return this;
     }
 
@@ -731,9 +659,9 @@ public class RestaurantApprovalRequestAvroModel extends org.apache.avro.specific
       * @return This builder.
       */
     public com.metrodata.kafka.model.avro.model.RestaurantApprovalRequestAvroModel.Builder setPrice(java.math.BigDecimal value) {
-      validate(fields()[6], value);
+      validate(fields()[5], value);
       this.price = value;
-      fieldSetFlags()[6] = true;
+      fieldSetFlags()[5] = true;
       return this;
     }
 
@@ -742,7 +670,7 @@ public class RestaurantApprovalRequestAvroModel extends org.apache.avro.specific
       * @return True if the 'price' field has been set, false otherwise.
       */
     public boolean hasPrice() {
-      return fieldSetFlags()[6];
+      return fieldSetFlags()[5];
     }
 
 
@@ -752,7 +680,7 @@ public class RestaurantApprovalRequestAvroModel extends org.apache.avro.specific
       */
     public com.metrodata.kafka.model.avro.model.RestaurantApprovalRequestAvroModel.Builder clearPrice() {
       price = null;
-      fieldSetFlags()[6] = false;
+      fieldSetFlags()[5] = false;
       return this;
     }
 
@@ -771,9 +699,9 @@ public class RestaurantApprovalRequestAvroModel extends org.apache.avro.specific
       * @return This builder.
       */
     public com.metrodata.kafka.model.avro.model.RestaurantApprovalRequestAvroModel.Builder setProducts(java.util.List<com.metrodata.kafka.model.avro.model.Product> value) {
-      validate(fields()[7], value);
+      validate(fields()[6], value);
       this.products = value;
-      fieldSetFlags()[7] = true;
+      fieldSetFlags()[6] = true;
       return this;
     }
 
@@ -782,7 +710,7 @@ public class RestaurantApprovalRequestAvroModel extends org.apache.avro.specific
       * @return True if the 'products' field has been set, false otherwise.
       */
     public boolean hasProducts() {
-      return fieldSetFlags()[7];
+      return fieldSetFlags()[6];
     }
 
 
@@ -792,7 +720,7 @@ public class RestaurantApprovalRequestAvroModel extends org.apache.avro.specific
       */
     public com.metrodata.kafka.model.avro.model.RestaurantApprovalRequestAvroModel.Builder clearProducts() {
       products = null;
-      fieldSetFlags()[7] = false;
+      fieldSetFlags()[6] = false;
       return this;
     }
 
@@ -811,9 +739,9 @@ public class RestaurantApprovalRequestAvroModel extends org.apache.avro.specific
       * @return This builder.
       */
     public com.metrodata.kafka.model.avro.model.RestaurantApprovalRequestAvroModel.Builder setCreatedAt(java.time.Instant value) {
-      validate(fields()[8], value);
+      validate(fields()[7], value);
       this.createdAt = value.truncatedTo(java.time.temporal.ChronoUnit.MILLIS);
-      fieldSetFlags()[8] = true;
+      fieldSetFlags()[7] = true;
       return this;
     }
 
@@ -822,7 +750,7 @@ public class RestaurantApprovalRequestAvroModel extends org.apache.avro.specific
       * @return True if the 'createdAt' field has been set, false otherwise.
       */
     public boolean hasCreatedAt() {
-      return fieldSetFlags()[8];
+      return fieldSetFlags()[7];
     }
 
 
@@ -831,7 +759,7 @@ public class RestaurantApprovalRequestAvroModel extends org.apache.avro.specific
       * @return This builder.
       */
     public com.metrodata.kafka.model.avro.model.RestaurantApprovalRequestAvroModel.Builder clearCreatedAt() {
-      fieldSetFlags()[8] = false;
+      fieldSetFlags()[7] = false;
       return this;
     }
 
@@ -842,13 +770,12 @@ public class RestaurantApprovalRequestAvroModel extends org.apache.avro.specific
         RestaurantApprovalRequestAvroModel record = new RestaurantApprovalRequestAvroModel();
         record.id = fieldSetFlags()[0] ? this.id : (java.util.UUID) defaultValue(fields()[0]);
         record.sagaId = fieldSetFlags()[1] ? this.sagaId : (java.util.UUID) defaultValue(fields()[1]);
-        record.paymentId = fieldSetFlags()[2] ? this.paymentId : (java.util.UUID) defaultValue(fields()[2]);
-        record.restaurantId = fieldSetFlags()[3] ? this.restaurantId : (java.util.UUID) defaultValue(fields()[3]);
-        record.orderId = fieldSetFlags()[4] ? this.orderId : (java.util.UUID) defaultValue(fields()[4]);
-        record.restaurantOrderStatus = fieldSetFlags()[5] ? this.restaurantOrderStatus : (com.metrodata.kafka.model.avro.model.RestaurantOrderStatus) defaultValue(fields()[5]);
-        record.price = fieldSetFlags()[6] ? this.price : (java.math.BigDecimal) defaultValue(fields()[6]);
-        record.products = fieldSetFlags()[7] ? this.products : (java.util.List<com.metrodata.kafka.model.avro.model.Product>) defaultValue(fields()[7]);
-        record.createdAt = fieldSetFlags()[8] ? this.createdAt : (java.time.Instant) defaultValue(fields()[8]);
+        record.restaurantId = fieldSetFlags()[2] ? this.restaurantId : (java.util.UUID) defaultValue(fields()[2]);
+        record.orderId = fieldSetFlags()[3] ? this.orderId : (java.util.UUID) defaultValue(fields()[3]);
+        record.restaurantOrderStatus = fieldSetFlags()[4] ? this.restaurantOrderStatus : (com.metrodata.kafka.model.avro.model.RestaurantOrderStatus) defaultValue(fields()[4]);
+        record.price = fieldSetFlags()[5] ? this.price : (java.math.BigDecimal) defaultValue(fields()[5]);
+        record.products = fieldSetFlags()[6] ? this.products : (java.util.List<com.metrodata.kafka.model.avro.model.Product>) defaultValue(fields()[6]);
+        record.createdAt = fieldSetFlags()[7] ? this.createdAt : (java.time.Instant) defaultValue(fields()[7]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;

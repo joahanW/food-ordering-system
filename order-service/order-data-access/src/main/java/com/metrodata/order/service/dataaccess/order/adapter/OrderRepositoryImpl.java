@@ -1,5 +1,6 @@
 package com.metrodata.order.service.dataaccess.order.adapter;
 
+import com.metrodata.common.domain.valueobject.OrderId;
 import com.metrodata.order.service.domain.core.entity.Order;
 import com.metrodata.order.service.dataaccess.order.mapper.OrderDataAccessMapper;
 import com.metrodata.order.service.dataaccess.order.repository.OrderJpaRepository;
@@ -29,4 +30,11 @@ public class OrderRepositoryImpl implements OrderRepository {
         return orderJpaRepository.findByTrackingId(trackingId.getValue())
                 .map(orderDataAccessMapper::orderEntityToOrder);
     }
+
+    @Override
+    public Optional<Order> findById(OrderId orderId) {
+        return orderJpaRepository.findById(orderId.getValue())
+                .map(orderDataAccessMapper::orderEntityToOrder);
+    }
+
 }

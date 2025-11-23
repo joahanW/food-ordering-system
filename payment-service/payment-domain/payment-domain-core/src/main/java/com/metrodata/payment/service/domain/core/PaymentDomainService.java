@@ -9,13 +9,14 @@ import com.metrodata.payment.service.domain.core.event.PaymentCompletedEvent;
 import com.metrodata.payment.service.domain.core.event.PaymentEvent;
 import com.metrodata.payment.service.domain.core.event.PaymentFailedEvent;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface PaymentDomainService {
 
     PaymentEvent validateAndInitiatePayment(Payment payment,
                                             CreditEntry creditEntry,
-                                            List<CreditHistory> creditHistories,
+                                            ArrayList<CreditHistory> creditHistories,
                                             List<String> failureMessages,
                                             DomainEventPublisher<PaymentCompletedEvent>
                                                 paymentCompletedEventPublisher,
@@ -24,7 +25,7 @@ public interface PaymentDomainService {
 
     PaymentEvent validateAndCancelPayment(Payment payment,
                                           CreditEntry creditEntry,
-                                          List<CreditHistory> creditHistories,
+                                          ArrayList<CreditHistory> creditHistories,
                                           List<String> failureMessages,
                                           DomainEventPublisher<PaymentCancelledEvent>
                                                   paymentCancelledEventPublisher,

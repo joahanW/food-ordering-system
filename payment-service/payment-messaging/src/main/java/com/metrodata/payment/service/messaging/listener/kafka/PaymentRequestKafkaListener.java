@@ -3,7 +3,6 @@ package com.metrodata.payment.service.messaging.listener.kafka;
 import com.metrodata.kafka.consumer.KafkaConsumer;
 import com.metrodata.kafka.model.avro.model.PaymentOrderStatus;
 import com.metrodata.kafka.model.avro.model.PaymentRequestAvroModel;
-import com.metrodata.kafka.model.avro.model.PaymentStatus;
 import com.metrodata.payment.service.domain.application.ports.input.message.listener.PaymentRequestMessageListener;
 import com.metrodata.payment.service.messaging.mapper.PaymentMessagingDataMapper;
 import lombok.RequiredArgsConstructor;

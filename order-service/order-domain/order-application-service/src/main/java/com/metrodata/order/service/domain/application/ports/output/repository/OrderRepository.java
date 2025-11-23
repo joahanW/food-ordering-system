@@ -1,5 +1,6 @@
 package com.metrodata.order.service.domain.application.ports.output.repository;
 
+import com.metrodata.common.domain.valueobject.OrderId;
 import com.metrodata.order.service.domain.core.entity.Order;
 import com.metrodata.order.service.domain.core.valueobject.TrackingId;
 
@@ -9,5 +10,5 @@ public interface OrderRepository {
 
     Order save(Order order);
     Optional<Order> findByTrackingId(TrackingId trackingId);
-
+    Optional<Order> findById(OrderId orderId);
 }

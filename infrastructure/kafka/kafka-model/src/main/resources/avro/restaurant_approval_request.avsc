@@ -18,13 +18,6 @@
       }
     },
     {
-      "name": "paymentId",
-      "type": {
-        "type": "string",
-        "logicalType": "uuid"
-      }
-    },
-    {
       "name": "restaurantId",
       "type": {
         "type": "string",

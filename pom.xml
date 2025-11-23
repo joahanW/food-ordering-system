@@ -164,6 +164,13 @@
                 <artifactId>restaurant-messaging</artifactId>
                 <version>${project.version}</version>
             </dependency>
+
+            <!--    SAGA Pattern     -->
+            <dependency>
+                <groupId>com.metrodata</groupId>
+                <artifactId>saga</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

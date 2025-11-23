@@ -15,7 +15,7 @@ public class RestaurantDataMapper {
 
     public Restaurant restaurantApprovalRequesToRestaurant(RestaurantApprovalRequest restaurantApprovalRequest){
         return Restaurant.builder()
-                .id(new RestaurantId(UUID.fromString(restaurantApprovalRequest.getId())))
+                .id(new RestaurantId(UUID.fromString(restaurantApprovalRequest.getRestaurantId())))
                 .orderDetail(OrderDetail.builder()
                         .id(new OrderId(UUID.fromString(restaurantApprovalRequest.getOrderId())))
                         .products(restaurantApprovalRequest.getProducts().stream().map(

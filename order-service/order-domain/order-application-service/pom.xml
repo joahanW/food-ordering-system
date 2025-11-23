@@ -41,6 +41,10 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.metrodata</groupId>
+            <artifactId>saga</artifactId>
+        </dependency>
     </dependencies>
 
 

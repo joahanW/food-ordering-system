@@ -23,7 +23,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Slf4j
@@ -45,7 +44,7 @@ public class PaymentRequestHelper {
         log.info("Received payment complete event for order id: {}", paymentRequest.getOrderId());
         Payment payment = paymentDataMapper.paymentRequestToPayment(paymentRequest);
         CreditEntry creditEntry = getCreditEntry(payment.getCustomerId());
-        List<CreditHistory> creditHistories = getCreditHistory(payment.getCustomerId());
+        ArrayList<CreditHistory> creditHistories = new ArrayList<>(getCreditHistory(payment.getCustomerId()));
         List<String> failureMessages = new ArrayList<>();
         PaymentEvent paymentEvent = paymentDomainService
                 .validateAndInitiatePayment(
@@ -65,7 +64,7 @@ public class PaymentRequestHelper {
         log.info("Received payment rollback event for order id: {}", paymentRequest.getOrderId());
         Payment payment = getPayment(new OrderId(UUID.fromString(paymentRequest.getOrderId())));
         CreditEntry creditEntry = getCreditEntry(payment.getCustomerId());
-        List<CreditHistory> creditHistories = getCreditHistory(payment.getCustomerId());
+        ArrayList<CreditHistory> creditHistories = new ArrayList<>(getCreditHistory(payment.getCustomerId()));
         List<String> failureMessages = new ArrayList<>();
         PaymentEvent paymentEvent = paymentDomainService
                 .validateAndCancelPayment(

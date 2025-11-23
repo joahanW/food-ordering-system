@@ -39,7 +39,7 @@ public class CreateOrderKafkaMessagePublisher implements OrderCreatedPaymentRequ
 
             orderKafkaMessageHelper.handlerSend(
                     future,
-                    orderServiceConfigData.getPaymentResponseTopicName(),
+                    orderServiceConfigData.getPaymentRequestTopicName(),
                     paymentRequestAvroModel,
                     orderId,
                     "PaymentRequestAvroModel");

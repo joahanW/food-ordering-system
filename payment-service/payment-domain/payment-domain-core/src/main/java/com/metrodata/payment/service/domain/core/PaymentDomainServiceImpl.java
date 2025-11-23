@@ -16,6 +16,8 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -27,16 +29,16 @@ public class PaymentDomainServiceImpl implements PaymentDomainService {
     @Override
     public PaymentEvent validateAndInitiatePayment(Payment payment,
                                                    CreditEntry creditEntry,
-                                                   List<CreditHistory> creditHistories,
+                                                   ArrayList<CreditHistory> creditHistories,
                                                    List<String> failureMessages,
                                                    DomainEventPublisher<PaymentCompletedEvent> paymentCompletedEventDomainEventPublisher,
                                                    DomainEventPublisher<PaymentFailedEvent> paymentFailedEventDomainEventPublisher) {
         payment.validatePayment(failureMessages);
         payment.initializePayment();
         validateCreditEntry(payment, creditEntry, failureMessages);
+        validateCreditHistory(creditEntry, creditHistories, failureMessages);
         subtractCreditEntry(payment, creditEntry);
         updateCreditHistory(payment, creditHistories, TransactionType.DEBIT);
-        validateCreditHistory(creditEntry, creditHistories, failureMessages);
 
         if (failureMessages.isEmpty()) {
             log.info("Payment is initiated for order id: {}", payment.getOrderId().getValue());
@@ -52,7 +54,7 @@ public class PaymentDomainServiceImpl implements PaymentDomainService {
     @Override
     public PaymentEvent validateAndCancelPayment(Payment payment,
                                                  CreditEntry creditEntry,
-                                                 List<CreditHistory> creditHistories,
+                                                 ArrayList<CreditHistory> creditHistories,
                                                  List<String> failureMessages,
                                                  DomainEventPublisher<PaymentCancelledEvent> paymentCancelledEventDomainEventPublisher,
                                                  DomainEventPublisher<PaymentFailedEvent> paymentFailedEventDomainEventPublisher) {
@@ -84,8 +86,8 @@ public class PaymentDomainServiceImpl implements PaymentDomainService {
     }
 
     private void updateCreditHistory(Payment payment,
-                                     List<CreditHistory> creditHistories,
-                                     TransactionType transactionType){
+                                                    ArrayList<CreditHistory> creditHistories,
+                                                    TransactionType transactionType){
         creditHistories.add(CreditHistory.builder()
                         .id(new CreditHistoryId(UUID.randomUUID()))
                         .customerId(payment.getCustomerId())

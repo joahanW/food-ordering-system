@@ -5,8 +5,7 @@ import com.metrodata.common.domain.valueobject.CustomerId;
 import com.metrodata.common.domain.valueobject.Money;
 import com.metrodata.payment.service.domain.core.valueobject.CreditHistoryId;
 import com.metrodata.payment.service.domain.core.valueobject.TransactionType;
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 @Getter

@@ -2,7 +2,6 @@ package com.metrodata.restaurant.service.messaging.listener.kafka;
 
 import com.metrodata.kafka.consumer.KafkaConsumer;
 import com.metrodata.kafka.model.avro.model.RestaurantApprovalRequestAvroModel;
-import com.metrodata.payment.service.domain.application.dto.RestaurantApprovalRequest;
 import com.metrodata.payment.service.domain.application.ports.input.message.listener.RestaurantApprovalRequestMessageListener;
 import com.metrodata.restaurant.service.messaging.mapper.RestaurantMessagingDataMapper;
 import lombok.RequiredArgsConstructor;
@@ -25,7 +24,7 @@ public class RestaurantApprovalRequestKafkaListener implements KafkaConsumer<Res
 
     @Override
     @KafkaListener(id="${kafka-consumer-config.restaurant-approval-consumer-group-id}",
-                   topics="${restaurant-service-config.restaurant-approval-request-topic-name}")
+                   topics="${restaurant-service.restaurant-approval-request-topic-name}")
     public void receive(@Payload List<RestaurantApprovalRequestAvroModel> messages,
                         @Header(KafkaHeaders.RECEIVED_KEY) List<String> keys, 
                         @Header(KafkaHeaders.RECEIVED_PARTITION) List<Integer> partitions,

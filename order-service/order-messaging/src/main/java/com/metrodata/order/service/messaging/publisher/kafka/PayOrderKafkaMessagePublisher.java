@@ -38,7 +38,7 @@ public class PayOrderKafkaMessagePublisher implements OrderPaidRestaurantRequest
 
             orderKafkaMessageHelper.handlerSend(
                     future,
-                    orderServiceConfigData.getRestaurantApprovalResponseTopicName(),
+                    orderServiceConfigData.getRestaurantApprovalRequestTopicName(),
                     restaurantApprovalRequestAvroModel,
                     orderId,
                     "RestaurantApprovalRequestAvroModel");
