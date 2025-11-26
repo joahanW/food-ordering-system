@@ -171,6 +171,13 @@
                 <artifactId>saga</artifactId>
                 <version>${project.version}</version>
             </dependency>
+
+            <!--    OUTBOX Pattern     -->
+            <dependency>
+                <groupId>com.metrodata</groupId>
+                <artifactId>outbox</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

@@ -1,9 +1,11 @@
 package com.metrodata.order.service.domain.application;
 
 import com.metrodata.common.domain.valueobject.OrderId;
+import com.metrodata.common.domain.valueobject.OrderStatus;
 import com.metrodata.order.service.domain.application.ports.output.repository.OrderRepository;
 import com.metrodata.order.service.domain.core.entity.Order;
 import com.metrodata.order.service.domain.core.exception.OrderNotFoundException;
+import com.metrodata.saga.SagaStatus;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -27,6 +29,16 @@ public class OrderSagaHelper {
 
     public void saveOrder(Order order){
         orderRepository.save(order);
+    }
+
+    public SagaStatus orderStatusToSagaStatus(OrderStatus orderStatus){
+        return switch (orderStatus) {
+            case PAID -> SagaStatus.PROCESSING;
+            case APPROVED -> SagaStatus.SUCCEEDED;
+            case CANCELLING -> SagaStatus.COMPENSATING; // Memberikan Kompensasi
+            case CANCELLED -> SagaStatus.COMPENSATED; // Diberikan Kompensasi
+            default -> SagaStatus.STARTED;
+        };
     }
 
 }

@@ -14,20 +14,18 @@ import org.springframework.validation.annotation.Validated;
 @RequiredArgsConstructor
 public class PaymentResponseMessageListenerImpl implements PaymentResponseMessageListener {
 
-
     private final OrderPaymentSaga orderPaymentSaga;
 
     @Override
     public void paymentCompleted(PaymentResponse paymentResponse) {
-        OrderPaidEvent domainEvent = orderPaymentSaga.process(paymentResponse);
-        log.info("Publishing OrderPaidEvent for order id: {}", paymentResponse.getOrderId());
-        domainEvent.fire();
+        orderPaymentSaga.process(paymentResponse);
+        log.info("Order Payment Saga process operation is completed for order id: {}", paymentResponse.getOrderId());
     }
 
     @Override
     public void paymentCancelled(PaymentResponse paymentResponse) {
         orderPaymentSaga.rollback(paymentResponse);
-        log.info("Order is roll backed for order id: {}",
+        log.info("Order is roll backed for order id: {} with failure messages: {}",
                 paymentResponse.getOrderId(),
                 String.join(",", paymentResponse.getFailureMessages()));
     }
