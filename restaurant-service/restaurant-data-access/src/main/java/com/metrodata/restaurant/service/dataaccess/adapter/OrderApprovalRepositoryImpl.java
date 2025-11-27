@@ -1,6 +1,6 @@
 package com.metrodata.restaurant.service.dataaccess.adapter;
 
-import com.metrodata.payment.service.domain.application.ports.output.repository.OrderApprovalRepository;
+import com.metrodata.restaurant.service.domain.application.ports.output.repository.OrderApprovalRepository;
 import com.metrodata.restaurant.service.dataaccess.mapper.RestaurantDataAccessMapper;
 import com.metrodata.restaurant.service.dataaccess.repository.OrderApprovalJpaRepository;
 import com.metrodata.restaurant.service.domain.core.entity.OrderApproval;

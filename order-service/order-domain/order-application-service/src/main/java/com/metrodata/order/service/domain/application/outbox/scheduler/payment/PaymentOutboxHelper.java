@@ -35,7 +35,7 @@ public class PaymentOutboxHelper {
     ){
         return paymentOutboxRepository
                 .findByTypeAndOutboxStatusAndSagaStatus(
-                        ORDER_SAGA_NAME, outboxStatus, sagaStatuses
+                        ORDER_SAGA_NAME, outboxStatus, sagaStatus
                 );
     }
 

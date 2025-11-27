@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.metrodata.common.domain.valueobject.OrderStatus;
 import com.metrodata.order.service.domain.application.outbox.model.approval.OrderApprovalEventPayload;
 import com.metrodata.order.service.domain.application.outbox.model.approval.OrderApprovalOutboxMessage;
-import com.metrodata.order.service.domain.application.ports.output.repository.ApprovalOutboxRepository;
+import com.metrodata.order.service.domain.application.ports.output.repository.RestaurantApprovalOutboxRepository;
 import com.metrodata.order.service.domain.core.exception.OrderDomainException;
 import com.metrodata.outbox.OutboxStatus;
 import com.metrodata.saga.SagaStatus;
@@ -25,7 +25,7 @@ import static com.metrodata.saga.order.SagaConstants.ORDER_SAGA_NAME;
 @RequiredArgsConstructor
 public class RestaurantApprovalOutboxHelper {
 
-    private final ApprovalOutboxRepository approvalOutboxRepository;
+    private final RestaurantApprovalOutboxRepository approvalOutboxRepository;
     private final ObjectMapper objectMapper;
 
     @Transactional(readOnly = true)

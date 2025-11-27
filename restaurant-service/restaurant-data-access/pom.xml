@@ -28,6 +28,10 @@
             <groupId>com.metrodata</groupId>
             <artifactId>common-data-access</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.metrodata</groupId>
+            <artifactId>outbox</artifactId>
+        </dependency>
     </dependencies>
 
 

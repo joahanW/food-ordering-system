@@ -19,9 +19,7 @@ import static com.metrodata.common.domain.DomainConstant.UTC;
 public class RestaurantDomainServiceImpl implements RestaurantDomainService {
     @Override
     public OrderApprovalEvent validateOrder(Restaurant restaurant,
-                                            List<String> failureMessages,
-                                            DomainEventPublisher<OrderApprovedEvent> orderApprovedEventDomainEventPublisher,
-                                            DomainEventPublisher<OrderRejectedEvent> orderRejectedEventDomainEventPublisher) {
+                                            List<String> failureMessages) {
         restaurant.validateOrder(failureMessages);
         log.info("Validating order with id: {}",restaurant.getOrderDetail().getId());
 
@@ -32,8 +30,7 @@ public class RestaurantDomainServiceImpl implements RestaurantDomainService {
                     restaurant.getOrderApproval(),
                     restaurant.getId(),
                     failureMessages,
-                    ZonedDateTime.now(ZoneId.of(UTC)),
-                    orderApprovedEventDomainEventPublisher);
+                    ZonedDateTime.now(ZoneId.of(UTC)));
         }else {
             log.info("Order is rejected for order id :{}", restaurant.getOrderDetail().getId().getValue());
             restaurant.constructOrderApproval(OrderApprovalStatus.REJECTED);
@@ -41,8 +38,7 @@ public class RestaurantDomainServiceImpl implements RestaurantDomainService {
                     restaurant.getOrderApproval(),
                     restaurant.getId(),
                     failureMessages,
-                    ZonedDateTime.now(ZoneId.of(UTC)),
-                    orderRejectedEventDomainEventPublisher
+                    ZonedDateTime.now(ZoneId.of(UTC))
             );
         }
     }

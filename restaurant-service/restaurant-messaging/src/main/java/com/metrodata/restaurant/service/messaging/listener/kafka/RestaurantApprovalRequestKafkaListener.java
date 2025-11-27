@@ -2,7 +2,7 @@ package com.metrodata.restaurant.service.messaging.listener.kafka;
 
 import com.metrodata.kafka.consumer.KafkaConsumer;
 import com.metrodata.kafka.model.avro.model.RestaurantApprovalRequestAvroModel;
-import com.metrodata.payment.service.domain.application.ports.input.message.listener.RestaurantApprovalRequestMessageListener;
+import com.metrodata.restaurant.service.domain.application.ports.input.message.listener.RestaurantApprovalRequestMessageListener;
 import com.metrodata.restaurant.service.messaging.mapper.RestaurantMessagingDataMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -4,7 +4,6 @@ import com.metrodata.common.domain.valueobject.PaymentOrderStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
 
 import java.math.BigDecimal;
 import java.time.Instant;

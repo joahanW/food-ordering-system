@@ -28,6 +28,10 @@
             <groupId>com.metrodata</groupId>
             <artifactId>kafka-model</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.metrodata</groupId>
+            <artifactId>payment-application-service</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

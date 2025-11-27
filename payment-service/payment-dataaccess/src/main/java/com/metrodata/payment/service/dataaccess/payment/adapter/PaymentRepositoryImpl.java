@@ -1,7 +1,6 @@
 package com.metrodata.payment.service.dataaccess.payment.adapter;
 
 import com.metrodata.common.domain.valueobject.OrderId;
-import com.metrodata.payment.service.dataaccess.payment.entity.PaymentEntity;
 import com.metrodata.payment.service.dataaccess.payment.mapper.PaymentDataAccessMapper;
 import com.metrodata.payment.service.dataaccess.payment.repository.PaymentJpaRepository;
 import com.metrodata.payment.service.domain.application.ports.output.repository.PaymentRepository;

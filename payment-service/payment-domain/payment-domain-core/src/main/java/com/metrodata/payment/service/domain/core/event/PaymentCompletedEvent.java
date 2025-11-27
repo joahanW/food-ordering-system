@@ -9,17 +9,7 @@ import java.util.List;
 
 public class PaymentCompletedEvent extends PaymentEvent{
 
-    private final DomainEventPublisher<PaymentCompletedEvent> paymentCompletedEventPublisher;
-
-    public PaymentCompletedEvent(Payment payment, ZonedDateTime createdAt,
-                                 DomainEventPublisher<PaymentCompletedEvent> paymentCompletedEventPublisher) {
-        super(payment, createdAt, Collections.emptyList());
-        this.paymentCompletedEventPublisher = paymentCompletedEventPublisher;
-    }
-
-
-    @Override
-    public void fire() {
-        paymentCompletedEventPublisher.publish(this);
+    public PaymentCompletedEvent(Payment payment, ZonedDateTime createdAt, List<String> failureMessage) {
+        super(payment, createdAt, failureMessage);
     }
 }

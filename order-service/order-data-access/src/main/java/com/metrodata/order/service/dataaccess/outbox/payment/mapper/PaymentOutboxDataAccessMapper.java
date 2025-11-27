@@ -17,7 +17,6 @@ public class PaymentOutboxDataAccessMapper {
                 .orderStatus(orderPaymentOutboxMessage.getOrderStatus())
                 .sagaStatus(orderPaymentOutboxMessage.getSagaStatus())
                 .outboxStatus(orderPaymentOutboxMessage.getOutboxStatus())
-                .version(orderPaymentOutboxMessage.getVersion())
                 .build();
     }
 
@@ -31,7 +30,6 @@ public class PaymentOutboxDataAccessMapper {
                 .orderStatus(paymentOutboxEntity.getOrderStatus())
                 .sagaStatus(paymentOutboxEntity.getSagaStatus())
                 .outboxStatus(paymentOutboxEntity.getOutboxStatus())
-                .version(paymentOutboxEntity.getVersion())
                 .build();
     }
 }

@@ -5,64 +5,13 @@ import com.metrodata.kafka.model.avro.model.PaymentRequestAvroModel;
 import com.metrodata.kafka.model.avro.model.PaymentResponseAvroModel;
 import com.metrodata.kafka.model.avro.model.PaymentStatus;
 import com.metrodata.payment.service.domain.application.dto.PaymentRequest;
-import com.metrodata.payment.service.domain.core.entity.Payment;
-import com.metrodata.payment.service.domain.core.event.PaymentCancelledEvent;
-import com.metrodata.payment.service.domain.core.event.PaymentCompletedEvent;
-import com.metrodata.payment.service.domain.core.event.PaymentFailedEvent;
+import com.metrodata.payment.service.domain.application.outbox.model.OrderEventPayload;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;
 
 @Component
 public class PaymentMessagingDataMapper {
-
-    public PaymentResponseAvroModel
-    paymentCompletedEventToPaymentResponseAvroModel(PaymentCompletedEvent paymentCompletedEvent) {
-        Payment payment = paymentCompletedEvent.getPayment();
-        return PaymentResponseAvroModel.newBuilder()
-                .setId(UUID.randomUUID())
-                .setSagaId(UUID.randomUUID())
-                .setPaymentId(payment.getId().getValue())
-                .setCustomerId(payment.getCustomerId().getValue())
-                .setOrderId(payment.getOrderId().getValue())
-                .setPrice(payment.getPrice().getAmount())
-                .setCreatedAt(payment.getCreatedAt().toInstant())
-                .setPaymentStatus(PaymentStatus.valueOf(payment.getPaymentStatus().name()))
-                .setFailureMessages(paymentCompletedEvent.getFailureMessage())
-                .build();
-    }
-
-    public PaymentResponseAvroModel
-    paymentCancelledEventToPaymentResponseAvroModel(PaymentCancelledEvent paymentCancelledEvent){
-        Payment payment = paymentCancelledEvent.getPayment();
-        return PaymentResponseAvroModel.newBuilder()
-                .setId(UUID.randomUUID())
-                .setSagaId(UUID.randomUUID())
-                .setPaymentId(payment.getId().getValue())
-                .setCustomerId(payment.getCustomerId().getValue())
-                .setOrderId(payment.getOrderId().getValue())
-                .setPrice(payment.getPrice().getAmount())
-                .setCreatedAt(payment.getCreatedAt().toInstant())
-                .setPaymentStatus(PaymentStatus.valueOf(payment.getPaymentStatus().name()))
-                .setFailureMessages(paymentCancelledEvent.getFailureMessage())
-                .build();
-    }
-
-    public PaymentResponseAvroModel
-    paymentFailedEventToPaymentResponseAvroModel(PaymentFailedEvent paymentFailedEvent){
-        Payment payment = paymentFailedEvent.getPayment();
-        return PaymentResponseAvroModel.newBuilder()
-                .setId(UUID.randomUUID())
-                .setSagaId(UUID.randomUUID())
-                .setPaymentId(payment.getId().getValue())
-                .setCustomerId(payment.getCustomerId().getValue())
-                .setOrderId(payment.getOrderId().getValue())
-                .setPrice(payment.getPrice().getAmount())
-                .setCreatedAt(payment.getCreatedAt().toInstant())
-                .setPaymentStatus(PaymentStatus.valueOf(payment.getPaymentStatus().name()))
-                .setFailureMessages(paymentFailedEvent.getFailureMessage())
-                .build();
-    }
 
     public PaymentRequest paymentRequestAvroModelToPaymentRequest(PaymentRequestAvroModel paymentRequestAvroModel){
         return PaymentRequest.builder()
@@ -73,6 +22,21 @@ public class PaymentMessagingDataMapper {
                 .price(paymentRequestAvroModel.getPrice())
                 .createdAt(paymentRequestAvroModel.getCreatedAt())
                 .paymentOrderStatus(PaymentOrderStatus.valueOf(paymentRequestAvroModel.getPaymentOrderStatus().name()))
+                .build();
+    }
+
+    public PaymentResponseAvroModel orderEventPayloadToPaymentResponseAvroModel(UUID sagaId,
+                                                                                OrderEventPayload orderEventPayload) {
+        return PaymentResponseAvroModel.newBuilder()
+                .setId(UUID.randomUUID())
+                .setSagaId(sagaId)
+                .setPaymentId(UUID.fromString(orderEventPayload.getPaymentId()))
+                .setCustomerId(UUID.fromString(orderEventPayload.getCustomerId()))
+                .setOrderId(UUID.fromString(orderEventPayload.getOrderId()))
+                .setPrice(orderEventPayload.getPrice())
+                .setCreatedAt(orderEventPayload.getCreatedAt().toInstant())//??
+                .setPaymentStatus(PaymentStatus.valueOf(orderEventPayload.getPaymentStatus()))
+                .setFailureMessages(orderEventPayload.getFailureMessages())
                 .build();
     }
 

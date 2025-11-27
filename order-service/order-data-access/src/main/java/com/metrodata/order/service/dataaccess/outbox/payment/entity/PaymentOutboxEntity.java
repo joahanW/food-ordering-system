@@ -35,6 +35,6 @@ public class PaymentOutboxEntity {
     private OutboxStatus outboxStatus;
 
     @Version
-    private int version;
+    private int version = 0;
 
 }

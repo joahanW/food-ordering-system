@@ -38,6 +38,10 @@
             <artifactId>kafka-avro-serializer</artifactId>
             <version>${kafka-avro-serializer.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.metrodata</groupId>
+            <artifactId>outbox</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

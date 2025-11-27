@@ -1,7 +1,5 @@
 package com.metrodata.order.service.domain.application;
 
-import com.metrodata.common.domain.event.EmptyEvent;
-import com.metrodata.common.domain.valueobject.OrderId;
 import com.metrodata.common.domain.valueobject.OrderStatus;
 import com.metrodata.common.domain.valueobject.PaymentStatus;
 import com.metrodata.order.service.domain.application.dto.message.PaymentResponse;
@@ -10,13 +8,10 @@ import com.metrodata.order.service.domain.application.outbox.model.approval.Orde
 import com.metrodata.order.service.domain.application.outbox.model.payment.OrderPaymentOutboxMessage;
 import com.metrodata.order.service.domain.application.outbox.scheduler.approval.RestaurantApprovalOutboxHelper;
 import com.metrodata.order.service.domain.application.outbox.scheduler.payment.PaymentOutboxHelper;
-import com.metrodata.order.service.domain.application.ports.output.message.publisher.restaurantapproval.OrderPaidRestaurantRequestMessagePublisher;
-import com.metrodata.order.service.domain.application.ports.output.repository.OrderRepository;
 import com.metrodata.order.service.domain.core.OrderDomainService;
 import com.metrodata.order.service.domain.core.entity.Order;
 import com.metrodata.order.service.domain.core.event.OrderPaidEvent;
 import com.metrodata.order.service.domain.core.exception.OrderDomainException;
-import com.metrodata.order.service.domain.core.exception.OrderNotFoundException;
 import com.metrodata.outbox.OutboxStatus;
 import com.metrodata.saga.SagaStatus;
 import com.metrodata.saga.SagaStep;

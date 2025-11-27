@@ -2,7 +2,7 @@ package com.metrodata.restaurant.service.dataaccess.adapter;
 
 import com.metrodata.common.dataaccess.restaurant.entity.RestaurantEntity;
 import com.metrodata.common.dataaccess.restaurant.repository.RestaurantJpaRepository;
-import com.metrodata.payment.service.domain.application.ports.output.repository.RestaurantRepository;
+import com.metrodata.restaurant.service.domain.application.ports.output.repository.RestaurantRepository;
 import com.metrodata.restaurant.service.dataaccess.mapper.RestaurantDataAccessMapper;
 import com.metrodata.restaurant.service.domain.core.entity.Restaurant;
 import lombok.RequiredArgsConstructor;
